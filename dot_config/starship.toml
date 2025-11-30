@@ -1,0 +1,71 @@
+# terminal prompt
+
+format = """
+[╭─░▒▓](#a3aed2)\
+[ ](bg:#a3aed2 fg:#090c0c)\
+[](bg:#769ff0 fg:#a3aed2)\
+$directory\
+[](fg:#769ff0 bg:#414c68)\
+$git_branch\
+$git_status\
+[](fg:#414c68 bg:#313a54)\
+$nodejs\
+$rust\
+$golang\
+$php\
+[](fg:#313a54 bg:#1d2230)\
+$time\
+[](fg:#1d2230)\
+\n$character"""
+
+[character]
+success_symbol = "╰─ "
+error_symbol = "╰─ "
+format = '[$symbol](fg:#a3aed2)'
+
+[directory]
+style = "fg:#f0f4ff bg:#769ff0"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#414c68"
+format = '[[ $symbol $branch ](fg:#8bb4ff bg:#414c68)]($style)'
+
+[git_status]
+style = "bg:#414c68"
+format = '[[($all_status$ahead_behind )](fg:#8bb4ff bg:#414c68)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#313a54"
+format = '[[ $symbol ($version) ](fg:#8bb4ff bg:#313a54)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#313a54"
+format = '[[ $symbol ($version) ](fg:#8bb4ff bg:#313a54)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#313a54"
+format = '[[ $symbol ($version) ](fg:#8bb4ff bg:#313a54)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#313a54"
+format = '[[ $symbol ($version) ](fg:#8bb4ff bg:#313a54)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
