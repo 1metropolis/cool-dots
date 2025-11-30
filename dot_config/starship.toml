@@ -24,7 +24,7 @@ error_symbol = "╰─ "
 format = '[$symbol](fg:#a3aed2)'
 
 [directory]
-style = "fg:#f0f4ff bg:#769ff0"
+style = "fg:#1B2238 bg:#769ff0"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
