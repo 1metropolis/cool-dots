@@ -3,9 +3,9 @@
 format = """
 [╭─░▒▓](#a3aed2)\
 [ ](bg:#a3aed2 fg:#090c0c)\
-[](bg:#5f8ff2 fg:#a3aed2)\
+[](bg:#6b90f6 fg:#a3aed2)\
 $directory\
-[](fg:#5f8ff2 bg:#394260)\
+[](fg:#6b90f6 bg:#394260)\
 $git_branch\
 $git_status\
 [](fg:#394260 bg:#2a3047)\
@@ -24,7 +24,7 @@ error_symbol = "╰─ "
 format = '[$symbol](fg:#a3aed2)'
 
 [directory]
-style = "fg:#e3e5e5 bg:#5f8ff2"
+style = "fg:#e3e5e5 bg:#6b90f6"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
