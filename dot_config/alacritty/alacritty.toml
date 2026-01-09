@@ -1,0 +1,25 @@
+[general]
+
+# import catpuccin theme
+import = ["~/.config/alacritty/catppuccin-macchiato.toml"]
+
+[window]
+
+dimensions = { columns = 106, lines = 28 }
+padding = { x = 0, y = 0 }
+
+opacity = 0.95
+
+decorations = "Full"
+dynamic_title = true
+
+[font]
+
+normal = {family = "MesloLGS Nerd Font Mono", style = "Regular"}
+size = 11
+
+
+[env]
+
+TERM = "xterm-256color"
+
