@@ -1,20 +1,7 @@
-# If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
-
-# clear terminal in case starting from pwsh
-# clear
-
-# terminal start text
-pokemon-colorscripts --no-title -rn dragonair,milotic,zeraora,charizard,flareon,vaporeon,jolteon,umbreon,espeon,glaceon,leafeon,sylveon,gengar,lucario,lugia,mimikyu,flygon,absol,greninja,garchomp,tyranitar,mew,lurantis,typhlosion,decidueye,ninetales
-# ampharos
-
-# version and info
-#echo "Welcome to \u001b[36m$(cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2 | tr -d '"')\u001b[0m"
-echo "Welcome to $(cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2 | tr -d '"')"
-echo "Current date-time is $(echo $(date +'%B %d, %Y %H:%M:%S'))"
+# Exit if not running interactively
+if [[ ! -o interactive ]]; then
+    return
+fi
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
@@ -32,7 +19,7 @@ compinit
 # better ls
 alias la='eza -a --icons'
 alias ll='eza -lbF --git --icons'
-alias ls='eza'
+alias ls='eza --icons'
 alias tree='eza --tree --level=2 --icons'
 
 # Pressing ctrl delete or ctrl backspace deletes by word
@@ -42,6 +29,29 @@ bindkey '^[[3;5~' kill-word
 # Pressing ctrl+arrow skips by word
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
+
+
+
+# Check the terminal type
+if [[ "$TERM" != "xterm-256color" ]]; then
+    # Specific prompt for Linux console (tty)
+    PROMPT='%F{green}%n@%m%f:%F{green}%~%f$ '
+    return
+fi
+
+# terminal start text
+pokemon-colorscripts --no-title -rn dragonair,milotic,zeraora,charizard,flareon,vaporeon,jolteon,umbreon,espeon,glaceon,leafeon,sylveon,gengar,lucario,lugia,mimikyu,flygon,absol,greninja,garchomp,tyranitar,mew,lurantis,typhlosion,decidueye,ninetales
+
+# version and info
+#echo "Welcome to \u001b[36m$(cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2 | tr -d '"')\u001b[0m"
+echo "Welcome to $(cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2 | tr -d '"')"
+echo "Current date-time is $(echo $(date +'%B %d, %Y %H:%M:%S'))"
+
+# run starship prompt
+eval "$(starship init zsh)"
+
+
+# old stuff
 
 # enable color support of ls and also add handy aliases
 # if [ -x /usr/bin/dircolors ]; then
@@ -57,7 +67,3 @@ bindkey "^[[1;5D" backward-word
 
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-
-# run starship prompt
-eval "$(starship init zsh)"
