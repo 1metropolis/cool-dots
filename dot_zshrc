@@ -23,6 +23,8 @@ alias lla='eza -a -lbF --git --icons'
 alias ls='eza --icons'
 alias tree='eza --tree --level=2 --icons'
 
+compdef 'eza=ls'
+
 # Pressing ctrl delete or ctrl backspace deletes by word
 bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
