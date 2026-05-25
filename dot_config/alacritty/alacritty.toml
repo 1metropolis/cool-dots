@@ -5,7 +5,7 @@ import = ["~/.config/alacritty/catppuccin-macchiato.toml"]
 
 [window]
 
-dimensions = { columns = 106, lines = 28 }
+dimensions = { columns = 115, lines = 31}
 padding = { x = 0, y = 0 }
 
 opacity = 0.95
@@ -16,8 +16,8 @@ dynamic_title = true
 
 [font]
 
-normal = {family = "MesloLGS Nerd Font Mono", style = "Regular"}
-size = 11
+normal = {family = "MesloLGMDZ Nerd Font Mono", style = "Regular"}
+size = 10.5
 
 
 [env]
