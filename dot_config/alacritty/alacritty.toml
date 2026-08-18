@@ -8,7 +8,8 @@ import = ["~/.config/alacritty/catppuccin-macchiato.toml"]
 dimensions = { columns = 115, lines = 31}
 padding = { x = 0, y = 0 }
 
-opacity = 0.95
+#opacity = 0.95
+#blur = true
 
 decorations = "Full"
 title = "Terminal"
