@@ -5,7 +5,7 @@ import = ["~/.config/alacritty/catppuccin-macchiato.toml"]
 
 [window]
 
-dimensions = { columns = 115, lines = 31}
+dimensions = { columns = 117, lines = 31 }
 padding = { x = 0, y = 0 }
 
 #opacity = 0.95
