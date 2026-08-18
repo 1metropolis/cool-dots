@@ -46,6 +46,9 @@ fi
 # aliases for convenience on graphical terms
 alias updategrub='sudo grub2-mkconfig -o /etc/grub2.cfg'
 
+# PLUGINS
+# 1 - syntax highlighting
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # set window title
 function set_win_title(){
@@ -55,19 +58,47 @@ precmd_functions+=(set_win_title)
 
 
 # terminal start text
-pokemon-colorscripts --no-title -rn dragonair,dragonite,milotic,charizard,vaporeon,umbreon,espeon,glaceon,leafeon,sylveon,gengar,lucario,lugia,flygon,absol,greninja,tyranitar,mew,lurantis,ninetales
+pokemon-colorscripts --no-title -rn dragonite,milotic,charizard,vaporeon,umbreon,espeon,glaceon,leafeon,sylveon,gengar,lugia,flygon,absol,tyranitar,mew,lurantis
+# tempremoved: dragonair,greninja,lucario,ninetales
+
 
 # version and info
 #echo "Welcome to \u001b[36m$(cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2 | tr -d '"')\u001b[0m"
 echo "Welcome to $(cat /etc/os-release | grep PRETTY_NAME | cut -d'=' -f2 | tr -d '"')"
 echo "Current date-time is $(echo $(date +'%B %d, %Y %H:%M:%S'))"
+echo ""
 
-# run starship prompt
+##### run starship prompt
 eval "$(starship init zsh)"
 
+##### transient prompt
+autoload -Uz add-zle-hook-widget
 
-# old stuff
+FULL_PROMPT=$'\n'"$PROMPT"
+TRANSIENT_PROMPT="${PROMPT// prompt / prompt --profile transient }"
 
+function transient-prompt() {
+  PROMPT="$TRANSIENT_PROMPT"
+  zle .reset-prompt
+}
+
+# only apply restore-prompt after first prompt has been printed (avoid double-line issues when terminal starts)
+typeset -g _line_init=false # set variable tracker
+
+function restore-prompt() {
+  if [[ $_line_init == false ]]; then
+    _line_init=true
+    return
+  fi
+  PROMPT="$FULL_PROMPT"
+  zle .reset-prompt
+}
+
+add-zle-hook-widget zle-line-finish transient-prompt
+add-zle-hook-widget zle-line-init restore-prompt
+
+
+###### old stuff ######
 # enable color support of ls and also add handy aliases
 # if [ -x /usr/bin/dircolors ]; then
 #    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
